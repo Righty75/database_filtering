@@ -2,10 +2,11 @@ import pandas as pd
 import shutil
 import os
 import re
+from pathlib import Path
 
 def setup_output_directory(directory_path):
     shutil.rmtree(directory_path, ignore_errors=True)
-    os.makedirs(directory_path)
+    Path(directory_path).mkdir(parents=True, exist_ok=True)
 
 def load_data():
     #ตารางเงื่อนไข

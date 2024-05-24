@@ -54,7 +54,9 @@ def apply_conditions(main_df, condition_table, cancel_product, cancel_act, outpu
             elif 'cancel_act' in find_pattern.lower():
                 filtered_df = filtered_df.loc[filtered_df['Bus. Process'].str.contains('|'.join(cancel_act), na=False)]
             else:
-                filtered_df = filtered_df.loc[~filtered_df['Bus. Process'].str.contains(find_pattern, na=False, regex=True)]
+                filtered_df = filtered_df.loc[filtered_df['Bus. Process'].str.contains(find_pattern, na=False, regex=True)]
+        else:
+            filtered_df = filtered_df.loc[filtered_df['Bus. Process'].isna()]
 
         output_path = os.path.join(output_directory, f'result_{index + 1}.csv')
         filtered_df.to_csv(output_path, index=False)

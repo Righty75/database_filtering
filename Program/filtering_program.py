@@ -63,7 +63,8 @@ def apply_conditions(main_df, condition_table, cancel_product, cancel_act, outpu
             filtered_df = filtered_df.loc[filtered_df['Bus. Process'].isna()]
 
         #เพิ่มคอลัมน์ 'เงื่อนไข' ลงใน DataFrame ที่กรองแล้ว
-        filtered_df = filtered_df.assign(เงื่อนไข=row['เงื่อนไข 1'])
+        filtered_df = filtered_df.assign(เงื่อนไข1 = row['เงื่อนไข 1'])
+        filtered_df = filtered_df.assign(เงื่อนไข2 = row['เงื่อนไข 2'])
 
         output_path = os.path.join(output_directory, f'result_{index + 1}.csv')
         filtered_df.to_csv(output_path, index=False)
